@@ -59,6 +59,47 @@ class RoomInventory {
     }
 }
 
+/**
+ * ============================================================
+ * CLASS - RoomSearchService
+ * ============================================================
+ *
+ * Use Case 4: Room Search & Availability Check
+ *
+ * Description:
+ * This class provides search functionality
+ * for guests to view available rooms.
+ *
+ * It reads room availability from inventory
+ * and room details from Room objects.
+ *
+ * No inventory mutation or booking logic
+ * is performed in this class.
+ *
+ * @version 4.0
+ */
+
+class RoomSearchService {
+
+    public void searchAvailableRooms(
+            RoomInventory inventory,
+            Room singleRoom,
+            Room doubleRoom,
+            Room suiteRoom) {
+
+        System.out.println("\n===== Available Rooms =====");
+
+        System.out.println("\nSingle Room:");
+        singleRoom.displayRoomDetails();
+
+        System.out.println("\nDouble Room:");
+        doubleRoom.displayRoomDetails();
+
+        System.out.println("\nSuite Room:");
+        suiteRoom.displayRoomDetails();
+    }
+}
+
 public class BookMyStayApp {
 
     public static void main(String[] args) {
