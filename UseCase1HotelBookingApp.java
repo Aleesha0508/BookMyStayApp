@@ -17,6 +17,48 @@ abstract class Room {
     }
 }
 
+import java.util.HashMap;
+import java.util.Map;
+
+class RoomInventory {
+
+    /**
+     * Stores available room count for each room type.
+     *
+     * Key   -> Room type name
+     * Value -> Available room count
+     */
+    private Map<String, Integer> roomAvailability;
+
+    /**
+     * Constructor initializes the inventory
+     * with default availability values.
+     */
+    public RoomInventory() {
+        roomAvailability = new HashMap<>();
+        initializeInventory();
+    }
+
+    /**
+     * Initializes room availability data.
+     */
+    private void initializeInventory() {
+        roomAvailability.put("Standard", 10);
+        roomAvailability.put("Deluxe", 5);
+        roomAvailability.put("Suite", 2);
+    }
+
+    /**
+     * Displays available rooms.
+     */
+    public void displayInventory() {
+        System.out.println("Room Availability:");
+        for (String roomType : roomAvailability.keySet()) {
+            System.out.println(roomType + " Rooms: " + roomAvailability.get(roomType));
+        }
+    }
+}
+
 public class UseCase1HotelBookingApp {
 
     public static void main(String[] args) {
