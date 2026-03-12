@@ -59,25 +59,7 @@ class RoomInventory {
     }
 }
 
-/**
- * ============================================================
- * CLASS - RoomSearchService
- * ============================================================
- *
- * Use Case 4: Room Search & Availability Check
- *
- * Description:
- * This class provides search functionality
- * for guests to view available rooms.
- *
- * It reads room availability from inventory
- * and room details from Room objects.
- *
- * No inventory mutation or booking logic
- * is performed in this class.
- *
- * @version 4.0
- */
+
 
 class RoomSearchService {
 
@@ -97,6 +79,71 @@ class RoomSearchService {
 
         System.out.println("\nSuite Room:");
         suiteRoom.displayRoomDetails();
+    }
+}
+
+
+class Reservation {
+
+    private String guestName;
+    private String roomType;
+
+    public Reservation(String guestName, String roomType) {
+        this.guestName = guestName;
+        this.roomType = roomType;
+    }
+
+    public String getGuestName() {
+        return guestName;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void displayReservation() {
+        System.out.println("Guest: " + guestName + " | Room Type: " + roomType);
+    }
+}
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+/**
+ * ============================================================
+ * CLASS - BookingRequestQueue
+ * ============================================================
+ *
+ * Handles incoming booking requests using FIFO order.
+ * Requests are stored and processed based on
+ * arrival sequence.
+ */
+
+class BookingRequestQueue {
+
+    private Queue<Reservation> bookingQueue;
+
+    public BookingRequestQueue() {
+        bookingQueue = new LinkedList<>();
+    }
+
+    /**
+     * Adds a booking request to the queue.
+     */
+    public void addRequest(Reservation reservation) {
+        bookingQueue.add(reservation);
+        System.out.println("Booking request added for: " + reservation.getGuestName());
+    }
+
+    /**
+     * Displays all queued requests.
+     */
+    public void showQueue() {
+        System.out.println("\nCurrent Booking Queue:");
+
+        for (Reservation r : bookingQueue) {
+            r.displayReservation();
+        }
     }
 }
 
